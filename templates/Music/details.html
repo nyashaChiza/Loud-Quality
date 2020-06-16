@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+{% block body %}
+<br />
+<div class="card mb-3 mx-auto col-md-8 bg-white border-light">
+    <div class="carousel-item active">
+        <img class="d-block w-100"   src ="../{{item.Image_Name}}" alt = "Thumbnails">
+      </div>
+ <div class="card-body  ">
+  <p class = "text-bold text-primary lead">{{item.Artist_Name.capitalize()}} - {{item.Project_Name.capitalize()}}  </p>
+ <p class = "card-text lead">{{item.Description}}.
+ </p>
+ <br />
+ <a class="btn btn-large btn-success my-2 style=" text-decoration:none;" href = "{{url_for('download', id=item.id, _external=True)}}">Download</a>
+ <br />
+ <br />
+ 
+ <audio src="{{ url_for('static',filename = item.File_Name)}}"
+controls autoplay>
+<p>This browser does not support our audio
+format.</p>
+</audio>
+ <p class = "lead "><strong> Tags: <strong><h5 class = "lead text-white"><span class="badge badge-primary">
+   <a class = "lead text-white" href= "{{url_for('searches', key=item.Artist_Name, _external=True)}}">{{item.Artist_Name}} </a></span> 
+  <span class="badge badge-primary"><a  class = "lead text-white" href= "{{url_for('searches', key=item.Genre, _external=True)}}">{{item.Genre}}</a></span> 
+   <span class="badge badge-primary"><a  class = "lead text-white" href= "#">{{item.Project_Type}}</a></span></h5>  
+</p>
+
+<br />
+  
+ </div>
+</div>
+<br />
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+   {% block body %}
+   <br />
+   <div class = "container text-center  mx-auto">
+<label class = "text-danger display-4">Page Not Found!</label>  
+</div>
+
+  
+   <div class = "container text-center  mx-auto">
+                <img class="img-fluid"  src = "{{url_for('static',filename = 'images/404.png')}}" alt="Card image cap">
+   </div>
+   <br />
+
+   {% endblock %}

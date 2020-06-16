@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+{% block body %}
+<div class = " container">
+
+  {% if alert == "login-failed" %}
+  <div class="mx-auto text-center  md-col-6 container alert-danger">Invalid log In Details </div>
+  {% elif alert == "signup-success" %}
+  <div class="mx-auto text-center  md-col-6 container alert-success"> Account Successfully Created</div>
+  {% elif alert == "in_use" %}
+  <div class="mx-auto text-center  md-col-6 container alert-danger"> User Already Logged In</div>
+  {% elif alert == "signup-failed" %}
+  <div class="mx-auto text-center  md-col-6 container alert-success"> Failed To Create Account</div>
+ 
+  {% endif %}
+  
+    <form class="form-signin" method = "post" action = "{{ url_for('sign_in') }}">
+      <div class="form-label-group">
+       <p class = "h1 text-muted text-center mx-auto">Please Sign In</p>
+      </div>  
+      <br />
+      <div class="form-label-group">
+        <input type="email" id="inputEmail" name = "Email" class="form-control" placeholder="Email address" required autofocus>
+       
+      </div>
+
+      <div class="form-label-group">
+        <input type="password" id="inputPassword" name = "Password" class="form-control" placeholder="Password" required>
+      
+      </div>
+
+      <div class="checkbox mb-3">
+        <label>
+           <a style=" text-decoration:none;" class = "text-muted" href = "{{url_for('signup')}}">Create New Account?</a>
+        </label>
+      </div>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      <p class="mt-5 mb-3 text-muted text-center">&copy; 2020</p>
+      </form>
+    </div>
+{% endblock %}

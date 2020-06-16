@@ -1,0 +1,51 @@
+{% extends 'layout2.html' %}
+{% block body %}
+{%  for item in pagination.items %}
+<div  class="col-md-4">
+    <a style=" text-decoration:none;" href="details/{{item.id}}">
+    <div class="card mb-4 box-shadow">
+      <img height = 230px min-width = 20px class="card-img-top" src="{{item.Image_Name}}" alt="Card image cap">
+      <div class="card-body">
+          <p class = "text-bold lead">{{item.Artist_Name.capitalize()}} - {{item.Project_Name.capitalize()}} </p>
+        <p class="card-text text-dark lead">{{item.Description[:20]}}...</p>
+        <div class="d-flex justify-content-between align-items-center">
+        
+          <small class="text-muted">{{item.Views}} views</small>
+        </div>
+      </div>
+    </div>
+</a>
+  </div>
+  <br />
+
+  {% endfor %}
+
+  {% if pagination.has_prev and pagination.has_next %}
+<div  class = "mx-auto bg-light" aria-label="Page navigation example  " style="padding-left: 20px;padding-bottom: 10px;">
+  <ul class="pagination page-padding " >   
+    <li class="page-item "><a class="page-link " href="{{url_for('index', page = pagination.page - 1 )}}">Prev</a></li>
+    <li class="page-item"><a class="page-link " href="{{url_for('index', page = pagination.page + 1 )}}">Next</a></li>
+</ul>
+</div>
+<br />
+{% elif pagination.has_next == False %}
+<div  class = "mx-auto bg-light" aria-label="Page navigation example  " style="padding-left: 20px;padding-bottom: 10px;">
+  <ul class="pagination page-padding " >   
+    <li class="page-item "><a class="page-link " href="{{url_for('index', page = pagination.page - 1 )}}">Prev</a></li>
+    <li class="page-item disabled"><a class="page-link " href="#">Next</a></li>
+</ul>
+</div>
+<br />
+
+{% elif pagination.has_prev == False %}
+<div  class = "mx-auto bg-light" aria-label="Page navigation example  " style="padding-left: 20px;padding-bottom: 10px;">
+  <ul class="pagination page-padding " >   
+    <li class="page-item disabled"><a class="page-link " href="#">Prev</a></li>
+    <li class="page-item "><a class="page-link " href="{{url_for('index', page = pagination.page + 1 )}}">Next</a></li>
+</ul>
+</div>
+<br />
+{% else %}
+{% endif %}
+
+{% endblock %}

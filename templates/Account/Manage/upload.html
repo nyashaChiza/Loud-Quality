@@ -1,0 +1,113 @@
+{% extends 'layout.html' %}
+{% block body %}
+<div class="col-md-8 mx-auto">
+  <div class="form-label-group">
+    <p class = "h1 text-muted text-center mx-auto">Upload Your Content</p>
+   </div> 
+
+   <form class="needs-validation" novalidate method = "POST" action = "{{ url_for('upload_process') }}" enctype="multipart/form-data">
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        
+        <input type="text" class="form-control" id="Project Name" name = "Project_Name" placeholder="Project Name" value="" required>
+        <div class="invalid-feedback">
+          Valid Project name is required.
+        </div>
+      </div>
+      <div class="col-md-6 mb-3">
+        
+        
+        <select class="custom-select d-block w-100" id="state" name = "Project_Type"required>
+          <option value="">Project Type..</option>
+          <option value="Single">Single</option>
+          <option value="EP">EP</option>
+          <option value="Mixtape">Mixtape</option>
+          <option value="Album">Album</option>
+        </select>
+        <div class="invalid-feedback">
+          Please provide a Project Type .
+        </div> <div class="invalid-feedback">
+          Valid Project Type is required.
+        </div>
+      </div>
+    </div>
+
+
+    <div class="mb-3">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">@</span>
+        </div>
+        <input type="text" class="form-control" id="Artist_Name" name = "Artist_Name" placeholder="Artist Name" required>
+        <div class="invalid-feedback" style="width: 100%;">
+          Your Artist Name is required.
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      
+      <input type="number" class="form-control" name= "Year" id="year" placeholder="Year">
+      <div class="invalid-feedback">
+        Please enter a valid Year 
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <textarea name="Description" required = "required" maxlength = "374" id="message"  rows="5" class="form-control" placeholder="Description"></textarea>
+                        </div>
+
+
+    <div class="mb-3">
+
+      <input type="text" id="Genre" name = "Genre" class="form-control" placeholder="Genre" required>
+      <div class="invalid-feedback">
+        Please enter valid Genre.
+      </div>
+    </div>
+<br />
+<input type="number"  name = "User_id" class="form-control" value = "{{session['user_id']}}" hidden>
+<p class = "h4 text-danger lead text-center mx-auto">*If you want to Upload a body of work that contains multiple files,
+    zip them using the (rar or zip)file format and upload the single file.</p>
+
+<br />
+    <div class=" ">
+        <label for="file">Select File</label>
+        <div class="input-group">
+            <div class="input-group-prepend border-outline">
+              <span class="input-group-text border " id="inputGroupFileAddon01">Upload File</span>
+            </div>
+            <div class="custom-file">
+              <input type="file" class="custom-file-input"  id="inputGroupFile01"
+                aria-describedby="inputGroupFileAddon01" placeholder = "Select Your File" name = "File">
+              <label class="custom-file-label " for="inputGroupFile01"></label>
+            </div>
+          </div>
+      </div>
+<br />
+<div class=" ">
+    <label for="file">Select Art</label>
+    <div class="input-group">
+        <div class="input-group-prepend border-outline">
+          <span class="input-group-text border " id="inputGroupFileAddon01">Upload Image</span>
+        </div>
+        <div class="custom-file">
+          <input type="file" class="custom-file-input"  id="inputGroupFile01"
+            aria-describedby="inputGroupFileAddon01" placeholder = "Select Your content art" name = "Image">
+          <label class="custom-file-label " for="inputGroupFile01"></label>
+        </div>
+      </div>
+  </div>
+<br />
+
+  <div class = "mb-3">    
+<button class="btn btn-primary btn-lg btn-block" type="submit">Upload</button>
+  </div> 
+</form>
+    </div>
+    <div class="col-md-8 mx-auto">
+      <div class="form-label-group">
+          <a href="{{url_for('manage')}}" class="btn btn-danger  mx-auto my-2">Back</a>
+         </div> 
+  </div>
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends 'layout.html' %}
+{% block body %}
+{% if alert == "empty" %}
+
+<div class="mx-auto col-md-4 text-center md-col-6 container alert-danger">No Uploaded Content</div>
+{% elif alert == "ok"%}
+<div class="form-label-group mx-auto">
+    <p class = "h1 text-muted text-center ">Your Content</p>
+   </div> 
+  <div class="limiter " style="
+  padding-left: 13px;
+  padding-right: 13px;
+">
+    <div class="container-table100"  style="width: 100%;">
+        <div class="wrap-table100">
+                <div class="table">
+
+                    <div class="row-table  header ">
+                        <div class="cell">
+                            Artist Name
+                        </div>
+                        <div class="cell">
+                            Project Name
+                        </div>
+                        <div class="cell">
+                            Project Type
+                        </div>
+                        <div class="cell">
+                            Views
+                        </div>
+                        <div class="cell">
+                            Downloads
+                        </div>
+                    </div>
+                    
+
+{% for item in content %}
+
+
+<div class="row-table">
+    <div class="cell" data-title="Artist Name">
+        {{item.Artist_Name}}
+    </div>
+    <div class="cell" data-title="Project Name">
+        {{item.Project_Name}}
+    </div>
+    <div class="cell" data-title="Project Type">
+        {{item.Project_Type}}
+    </div>
+    <div class="cell" data-title="Views">
+        {{item.Views}}
+    </div>
+    <div class="cell" data-title="Downloads">
+        {{item.Downloads}}
+    </div>
+</div>
+
+{% endfor %}
+{% endif %}
+
+</div>
+</div>
+</div>        
+
+                   
+                   
+        <div class="col-md-8 mx-auto">
+            <div class="form-label-group mx-auto">
+                <a href="{{url_for('manage')}}" class="btn btn-danger  mx-auto my-2">Back</a>
+               </div> 
+        </div>
+        {% endblock %}

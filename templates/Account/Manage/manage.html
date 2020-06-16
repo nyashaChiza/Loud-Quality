@@ -1,0 +1,87 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+{% if status == "success" %}
+<div class="col-md-9 mx-auto ">
+  <div class="card mb-4 box-shadow">
+    <div class="mx-auto col-md-4 text-center md-col-6 container alert-success">Content Uploaded Successfully </div>
+
+  </div>
+</div>
+{% elif alert == "update-success" %}
+<div class="col-md-9 mx-auto ">
+  <div class="card mb-4 box-shadow">
+    <div class="mx-auto col-md-4 text-center md-col-6 container alert-success">Account Details Updated Successfully </div>
+
+  </div>
+</div>
+{% elif alert == "update-failed" %}
+<div class="col-md-9 mx-auto ">
+  <div class="card mb-4 box-shadow">
+    <div class="mx-auto col-md-4 text-center md-col-6 container alert-dander">Failed To Update Account Details </div>
+
+  </div>
+</div>
+{% elif status == "failed" %}
+<div class="col-md-9 mx-auto ">
+  <div class="card mb-4 box-shadow">
+    <div class="mx-auto col-md-4 text-center md-col-6 container alert-danger">Content Upload Failed </div>
+
+  </div>
+</div>
+
+{% endif %}
+<div class="col-md-9 mx-auto ">
+    <div class="card mb-4 box-shadow">
+      <div class="mx-auto col-md-4 text-center md-col-6 container alert-success">Welcome, {{session['name']}} </div>
+
+    </div>
+</div>
+
+
+<div class="col-md-4">
+  <a style=" text-decoration:none;" href=" {{url_for('viewContent', id=session['user_id'], _external=True)}}">
+    <div class="card mb-4 box-shadow">
+      <img class="card-img-top rounded" data-src="holder.js/98px65?theme=thumb&bg=25595c&fg=eceeef&text=View Content" alt="Card image cap">
+</div>
+  </a>
+</div>
+
+<div class="col-md-4">
+  <a style=" text-decoration:none;" href=" {{url_for('upload', id=session['user_id'], _external=True)}}">
+    <div class="card mb-4 box-shadow">
+      <img class="card-img-top rounded" data-src="holder.js/98px65?theme=thumb&bg=25595c&fg=eceeef&text=Upload Content" alt="Card image cap">
+</div>
+</a>
+</div>
+
+
+    
+<div class="col-md-4">
+  <a style=" text-decoration:none;" href=" {{url_for('edit', id=session['user_id'], _external=True)}}">  
+  <div class="card mb-4 box-shadow">
+      <img class="card-img-top rounded" data-src="holder.js/98px65?theme=thumb&bg=25595c&fg=eceeef&text= Manage Account" alt="Card image cap">
+</div>
+</a>
+</div>
+
+<div class="col-md-4">
+    <div class="card mb-4 box-shadow">
+      <img class="card-img-top rounded" data-src="holder.js/98px65?theme=thumb&bg=65595c&fg=eceeef&text=Coming Soon" alt="Card image cap">
+</div>
+</div>
+    <div class="col-md-4">
+        <div class="card mb-4 box-shadow">
+          <img class="card-img-top rounded" data-src="holder.js/98px65?theme=thumb&bg=65595c&fg=eceeef&text= Coming Soon" alt="Card image cap">
+    </div>
+    </div>
+    
+    <div class="col-md-4">
+      <a style=" text-decoration:none;" href="{{ url_for('logout')}}">
+        <div class="card mb-4 box-shadow">
+          <img class="card-img-top rounded" data-src="holder.js/98px65?theme=thumb&bg=48595f&fg=eceeef&text=Log Out" alt="Card image cap">
+    </div>
+  </a>
+    </div>
+
+{% endblock %}
