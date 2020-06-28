@@ -187,7 +187,7 @@ def edit_process():
 def sign_in():
     if request.method == 'POST':
         
-        return auth(request.form['Email'], generate_password_hash(request.form['Password']))
+        return auth(request.form['Email'], request.form['Password'])
     
 
 @app.route('/viewContent/<string:id>')
